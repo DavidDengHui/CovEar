@@ -74,13 +74,13 @@ function example_remove_dashboard_widgets()
     // Globalize the metaboxes array, this holds all the widgets for wp-admin
     global $wp_meta_boxes;
     // 以下这一行代码将删除 "快速发布" 模块
-    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    //unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
     // 以下这一行代码将删除 "引入链接" 模块
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
     // 以下这一行代码将删除 "插件" 模块
     unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
     // 以下这一行代码将删除 "近期评论" 模块
-    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+    //unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
     // 以下这一行代码将删除 "近期草稿" 模块
     unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
     // 以下这一行代码将删除 "WordPress 开发日志" 模块
@@ -88,7 +88,7 @@ function example_remove_dashboard_widgets()
     // 以下这一行代码将删除 "其它 WordPress 新闻" 模块
     unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
     // 以下这一行代码将删除 "概况" 模块
-    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+    //unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 }
 add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets');
 remove_action('welcome_panel', 'wp_welcome_panel');
@@ -121,6 +121,7 @@ add_action('admin_head', 'custom_logo');
 /**
  * Disable the emoji's
  */
+/*
 function disable_emojis()
 {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
@@ -133,9 +134,11 @@ function disable_emojis()
     add_filter('tiny_mce_plugins', 'disable_emojis_tinymce');
 }
 add_action('init', 'disable_emojis');
+*/
 /**
  * Filter function used to remove the tinymce emoji plugin.
  */
+/*
 function disable_emojis_tinymce($plugins)
 {
     if (is_array($plugins)) {
@@ -144,6 +147,7 @@ function disable_emojis_tinymce($plugins)
         return array();
     }
 }
+*/
 //禁止头部加载s.w.org
 function remove_dns_prefetch($hints, $relation_type)
 {
@@ -153,3 +157,13 @@ function remove_dns_prefetch($hints, $relation_type)
     return $hints;
 }
 add_filter('wp_resource_hints', 'remove_dns_prefetch', 10, 2);
+//去除尾缀
+function wpdx_custom_admin_title($admin_title, $title){
+    return $title.' &lsaquo; '.get_bloginfo('name');
+}
+add_filter('admin_title', 'wpdx_custom_admin_title', 10, 2);
+
+function wpdx_custom_login_title($login_title, $title){
+    return $title.' &lsaquo; '.get_bloginfo('name');
+}
+add_filter('login_title', 'wpdx_custom_login_title', 10, 2);
