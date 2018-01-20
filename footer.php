@@ -7,5 +7,14 @@ POWERMODE.colorful = true; // ture 为启用礼花特效
 POWERMODE.shake = false; // false 为禁用震动特效
 document.body.addEventListener('input', POWERMODE);
 </script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?033d0f0f069aa0b757ad3668391b5bc6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <?php wp_footer(); ?>
 </body></html>

@@ -190,4 +190,13 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
 		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather/'.$data['result']['img'].'.png">';?>
 	</div>
 </div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?033d0f0f069aa0b757ad3668391b5bc6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body></html>
