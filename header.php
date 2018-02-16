@@ -17,9 +17,9 @@
 	<h1 class="mod-head__title"><a href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a></h1>
 	<div class="mod-head__logo">
 		<a href="<?php echo home_url();?>" title="<?php bloginfo( 'name' ); ?>"><?php if ( !get_option('header_logo_image') ) { } else { echo '<img class="avatar" width="26" height="26" src="' . get_option('header_logo_image') .'">';} ?></a>
-		<!--<?php if (get_posts_count_from_last_24h() != '0') { ?>
+		<?php if (get_posts_count_from_last_24h() != '0') { ?>
 			<div class="zjgx"><?php echo get_posts_count_from_last_24h(); ?></div>
-		<?php } else { } ?>-->
+		<?php } else {  } ?>
 	</div>
 	<nav class="mod-head__nav">
 	<?php 
@@ -28,7 +28,10 @@
 		echo $top_nav;
 	?>
 	</nav>
-	<a id="right-panel-link" href="#right-panel"><i class="iconfont icon-fenlei"></i></a>
+	<a style="padding-left:1rem;font-size:1.1rem;color:#888;text-shadow:0.1rem 0.1rem 2.0rem black;">David Deng's Blog</a>
+	<a id="right-panel-link" href="#right-panel">
+		<i class="iconfont icon-fenlei"></i>
+	</a>
 	<div id="right-panel" class="panel">
 	<h3 class="rightnavh3">Menu</h3>
 		<?php 

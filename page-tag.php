@@ -14,7 +14,7 @@ $args = array(
 'post_type'           => 'post',
     'post_status'         => 'publish',
     'ignore_sticky_posts' => 1,
-    'tag_id'              => $value->term_taxonomy_id, 
+	'tag_id'              => $value->term_taxonomy_id, 
 );
 $tagpost = new WP_Query( $args );
 ?>
