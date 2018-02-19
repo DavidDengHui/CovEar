@@ -10,6 +10,15 @@
 	wp_enqueue_script( 'jquery' );
 	wp_head();
 ?>
+<style>
+@font-face {
+font-family: 'zhcn-font';
+    src: url('<?php bloginfo('template_directory'); ?>/font/zhcn-font.otf') format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+body{font-family:'zhcn-font';}
+</style>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.js"></script>
 </head>
 <body>
@@ -28,8 +37,8 @@
 		echo $top_nav;
 	?>
 	</nav>
-	<a style="padding-left:1rem;font-size:1.1rem;color:#888;text-shadow:0.1rem 0.1rem 2.0rem black;">David Deng's Blog</a>
 	<a id="right-panel-link" href="#right-panel">
+		<span style="padding-right:6rem;font-size:1.1rem;color:#888;text-shadow:0.1rem 0.1rem 3.0rem black;">David Deng's Blog</span>
 		<i class="iconfont icon-fenlei"></i>
 	</a>
 	<div id="right-panel" class="panel">

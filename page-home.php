@@ -52,7 +52,13 @@ font-family: 'home-font';
 	font-weight: normal;
 	font-style: normal;
 }
-html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.jpg');background-position:center center;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}body{font-family:'home-font';}.ch{font-family:'Kaiti';}
+@font-face {
+font-family: 'zhcn-font';
+    src: url('<?php bloginfo('template_directory'); ?>/font/zhcn-font.otf') format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.jpg');background-position:center center;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}body{font-family:'home-font';}.ch{font-family:'zhcn-font';}
 </style>
 </head>
 <body class="custom-background">

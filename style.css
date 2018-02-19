@@ -4,20 +4,36 @@ Theme URI: http://covear.top/
 Author: David Deng
 Author URI: http://covear.top/
 Description: This is CovEar's theme. CovEar is David Deng's blog. This theme is made by David Deng. So, this theme can only be used by me alone. No one can be used for commercial purposes.
-Version: 1.0
+Version: 2.3
 Text Domain: CovEar
 Tags: CovEar, one-column, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments
 */
 
 @font-face {
 	font-family: "iconfont";
-  src: url('font/iconfont.eot?t=1490325857091'); /* IE9*/
-  src: url('font/iconfont.eot?t=1490325857091#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('font/iconfont.woff?t=1490325857091') format('woff'), /* chrome, firefox */
-  url('font/iconfont.ttf?t=1490325857091') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('font/iconfont.svg?t=1490325857091#iconfont') format('svg'); /* iOS 4.1- */
+  	src: url('font/iconfont.eot?t=1490325857091'); /* IE9*/
+  	src: url('font/iconfont.eot?t=1490325857091#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  	url('font/iconfont.woff?t=1490325857091') format('woff'), /* chrome, firefox */
+  	url('font/iconfont.ttf?t=1490325857091') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  	url('font/iconfont.svg?t=1490325857091#iconfont') format('svg'); /* iOS 4.1- */
 }
-
+@font-face {
+	font-family: 'home-font';
+	src: url('font/home-font.eot');
+	src: url('font/home-font.eot#iefix') format('embedded-opentype'),
+	url('font/home-font.woff') format('woff'),
+	url('font/home-font.woff2') format('woff2'),
+	url('font/home-font.ttf') format('truetype'),
+	url('font/home-font.svg#home-font') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'zhcn-font';
+	src: url('font/zhcn-font.otf') format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
 .iconfont {
 	font-family: "iconfont" !important;
 	font-style: normal;
