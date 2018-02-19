@@ -6,6 +6,7 @@
 POWERMODE.colorful = true; // ture 为启用礼花特效
 POWERMODE.shake = false; // false 为禁用震动特效
 document.body.addEventListener('input', POWERMODE);
+document.getElementById('comment').setAttribute('placeholder', '有启发？疑问？吐槽？...说点什么吧(^_^)');
 </script>
 <div style="display:none;">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1272718072'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272718072' type='text/javascript'%3E%3C/script%3E"));</script>

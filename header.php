@@ -38,7 +38,7 @@ body{font-family:'zhcn-font';}
 	?>
 	</nav>
 	<a id="right-panel-link" href="#right-panel">
-		<span style="padding-right:6rem;font-size:1.1rem;color:#888;text-shadow:0.1rem 0.1rem 3.0rem black;">David Deng's Blog</span>
+		<span style="padding-right:6rem;font-size:1.1rem;color:#888;text-shadow:0.1rem 0.1rem 4.0rem black;">David Deng's Blog</span>
 		<i class="iconfont icon-fenlei"></i>
 	</a>
 	<div id="right-panel" class="panel">
