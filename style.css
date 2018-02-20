@@ -4,14 +4,14 @@ Theme URI: http://covear.top/
 Author: David Deng
 Author URI: http://covear.top/
 Description: This is CovEar's theme. CovEar is David Deng's blog. This theme is made by David Deng. So, this theme can only be used by me alone. No one can be used for commercial purposes.
-Version: 2.6
+Version: 2.7
 Text Domain: CovEar
 Tags: CovEar, one-column, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments
 */
 
 .emoji {
-	width:1.68em;
-	height:1.68em;
+	width:1em;
+	height:1em;
 }
 
 @font-face {
