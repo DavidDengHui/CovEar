@@ -26,9 +26,9 @@ body{font-family:'zhcn-font';}
 	<h1 class="mod-head__title"><a href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a></h1>
 	<div class="mod-head__logo">
 		<a href="<?php echo home_url();?>" title="<?php bloginfo( 'name' ); ?>"><?php if ( !get_option('header_logo_image') ) { } else { echo '<img class="avatar" width="26" height="26" src="' . get_option('header_logo_image') .'">';} ?></a>
-		<?php if (get_posts_count_from_last_24h() != '0') { ?>
-			<div class="zjgx"><?php echo get_posts_count_from_last_24h(); ?></div>
-		<?php } else {  } ?>
+		<?php //if (get_posts_count_from_last_24h() != '0') { ?>
+			<!--div class="zjgx"><?php //echo get_posts_count_from_last_24h(); ?></div-->
+		<?php //} else {  } ?>
 	</div>
 	<nav class="mod-head__nav">
 	<?php 
