@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <article class="mod-archive">
-	<div style="font-size: .5em;color: #999;">
+	<div style="font-size: .9em;color: #999;">
 		<p>
 		现在是北京时间<span id="time"><?php
     date_default_timezone_set("PRC");
@@ -14,7 +14,7 @@
             function getTime(){
                 var t = new Date(ts);
                 with(t) {
-                    var _time = ""+getFullYear()+"年" + (getMonth()+1)+"月"+getDate()+"日" + (getHours()<10 ? "0" :"") + getHours() + "时" + (getMinutes()<10 ? "0" :"") + getMinutes() + "分" + (getSeconds()<10 ? "0" :"") + getSeconds() + "秒";
+                    var _time = ""+getFullYear()+"/" + (getMonth()+1)+"/"+getDate()+"-" + (getHours()<10 ? "0" :"") + getHours() + ":" + (getMinutes()<10 ? "0" :"") + getMinutes() + ":" + (getSeconds()<10 ? "0" :"") + getSeconds() + "";
                 }
                 get_obj("time").innerHTML = _time;
                 setTimeout("getTime()", 1000);

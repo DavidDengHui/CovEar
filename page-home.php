@@ -105,9 +105,9 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
             $realip = getenv("REMOTE_ADDR");
         }
     }
-    //$realip = "255.255.255.255";
-    $host = "https://dm-81.data.aliyun.com";
-    $path = "/rest/160601/ip/getIpInfo.json";
+    //$realip = "192.168.1.1";
+    $host = "https://api01.aliyun.venuscn.com";
+    $path = "/ip";
     $method = "GET";
     $appcode = "e699bdf46b8d4d48bc5ec6ddd3997b44";
     $headers = array();
@@ -128,25 +128,14 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
     $data = json_decode(curl_exec($curl), true);
-    if ( $data['code'] == 0 ) {
-        if ( $data['data']['city_id'] == "local" ) {
-            $city = "深圳";
-            echo "中国广东省深圳市阿里云";
-        }
-        else {
-            if ( $data['data']['country_id'] == "IANA" ) {
-                $city = "株洲";
-                echo "未知地点";
-            }
-            else {
-                $city = $data['data']['city'];
-                echo $data['data']['country'].$data['data']['region'].$data['data']['city'].$data['data']['isp'];
-            }
-        }
+//var_dump($data);
+    if ( $data['ret'] == 200 ) {
+        $city = $data['data']['city'];
+        echo $data['data']['country'].$data['data']['area'].$data['data']['region'].$data['data']['city'].$data['data']['isp'];
     }
     else {
-        $city = "株洲";
-        echo "未知地点";
+        $city = '株洲';
+        echo '湖南省株洲市('.$data['ret'].')';
     }
     ?> 
 	</span></p>
@@ -164,7 +153,7 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
 	?> 
 	</p>
     <br />
-    <h2 class="indexcolor">Weather</h2>
+    <h2 class="indexcolor">Weather<br /></h2>
     <p class="indexcolor"><span class="ch">
     <?php
     $host = "http://jisutqybmf.market.alicloudapi.com";
@@ -189,6 +178,7 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
     $data = json_decode(curl_exec($curl), true);
+var_dump($data);
     echo $data['result']['city']." : ".$data['result']['weather'];
     ?>
     </span></p>
