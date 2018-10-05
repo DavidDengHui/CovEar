@@ -59,9 +59,12 @@ font-family: 'zhcn-font';
 	font-style: normal;
 }
 html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.jpg');background-position:center center;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}body{font-family:'home-font';}.ch{font-family:'zhcn-font';}
+div#bgpic{position:fixed;top:0;left:0;bottom:0;right:0;z-index:-1;}
+div#bgpic > img {height:100%;width:100%;border:0;} 
 </style>
 </head>
 <body class="custom-background">
+<div id="bgpic"><img src="<?php bloginfo('template_directory'); ?>/images/bg1.jpg" /></div>
 <div class="willerce">
 	<div class="sydlogo">
 		<?php 
@@ -131,6 +134,9 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
 //var_dump($data);
     if ( $data['ret'] == 200 ) {
         $city = $data['data']['city'];
+        if ( $city == '' || $city == null || $city == ' ' ) {
+            $city = '株洲';
+        }
         echo $data['data']['country'].$data['data']['area'].$data['data']['region'].$data['data']['city'].$data['data']['isp'];
     }
     else {
@@ -156,14 +162,47 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
     <h2 class="indexcolor">Weather<br /></h2>
     <p class="indexcolor"><span class="ch">
     <?php
-    $host = "http://jisutqybmf.market.alicloudapi.com";
-    $path = "/weather/query";
-    $method = "GET";
+    $city=$city.'市';
+    $file = get_template_directory_uri().'/images/weather2/cityID.xml';
+    $xmlTag = array(
+        'Fid',
+        'name'
+    );
+    $dom = new DOMDocument();
+    $dom->load($file);
+    $RECORDS = $dom->getElementsByTagName('RECORD');
+    $Fid = '0';
+    $name = '0';
+    foreach($RECORDS as $k => $p) {
+        $i = 0;
+        $flag = array();
+        foreach($xmlTag as $x) {
+            $node = $p->getElementsByTagName($x);
+            $flag[$i] = $node->item(0)->nodeValue;
+            ++$i;
+            $i %= 2;
+        }
+        if ( $flag[1] == $city ) {
+            $Fid = $flag[0];
+            $name = $flag[1];
+            unset($falg);
+            break;
+        }
+    }
+    if ( $Fid == '0' ) {
+        $Fid = '657';
+        $name = '株洲市';
+    }
+    $host = "http://freecityid.market.alicloudapi.com";
+    $path = "/whapi/json/alicityweather/briefforecast3days";
+    $method = "POST";
     $appcode = "e699bdf46b8d4d48bc5ec6ddd3997b44";
     $headers = array();
     array_push($headers, "Authorization:APPCODE " . $appcode);
-    if( $city == "" ) $city = "株洲";
-    $querys = "city=".$city."&citycode=citycode&cityid=cityid&ip=ip&location=location";
+    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
+    $cityID = $Fid;
+    $token = '46e13b7aab9bb77ee3358c3b672a2ae4';
+    $querys = "cityId=".$cityID."&token=".$token;
     $bodys = "";
     $url = $host . $path . "?" . $querys;
     $curl = curl_init();
@@ -178,12 +217,11 @@ html{background-image:url('<?php bloginfo('template_directory'); ?>/images/bg1.j
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
     $data = json_decode(curl_exec($curl), true);
-var_dump($data);
-    echo $data['result']['city']." : ".$data['result']['weather'];
+    echo $data['data']['city']['name']." : ".$data['data']['condition']['condition'];
     ?>
     </span></p>
     <div class="wtlogo">
-		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather/'.$data['result']['img'].'.png">';?>
+		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather2/W'.$data['data']['condition']['icon'].'.png">';?>
 	</div>
 </div>
 <div style="display:none;">
