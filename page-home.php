@@ -159,8 +159,8 @@ div#bgpic > img {height:100%;width:100%;border:0;}
 	?> 
 	</p>
     <br />
-    <h2 class="indexcolor">Weather<br /></h2>
-    <p class="indexcolor"><span class="ch">
+    <!--h2 class="indexcolor">Weather<br /></h2>
+    <p class="indexcolor"><span class="ch"-->
     <?php
     $city=$city.'市';
     $file = get_template_directory_uri().'/images/weather2/cityID.xml';
@@ -193,16 +193,16 @@ div#bgpic > img {height:100%;width:100%;border:0;}
         $Fid = '657';
         $name = '株洲市';
     }
-    $host = "http://freecityid.market.alicloudapi.com";
-    $path = "/whapi/json/alicityweather/briefforecast3days";
-    $method = "POST";
+    $host = "https://jisutqybmf.market.alicloudapi.com";
+    $path = "/weather/query";
+    $method = "GET";
     $appcode = "e699bdf46b8d4d48bc5ec6ddd3997b44";
     $headers = array();
     array_push($headers, "Authorization:APPCODE " . $appcode);
-    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
+//    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
     $cityID = $Fid;
     $token = '46e13b7aab9bb77ee3358c3b672a2ae4';
-    $querys = "cityId=".$cityID."&token=".$token;
+    $querys = "city=".$city;
     $bodys = "";
     $url = $host . $path . "?" . $querys;
     $curl = curl_init();
@@ -216,13 +216,24 @@ div#bgpic > img {height:100%;width:100%;border:0;}
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
+    //var_dump($data);
     $data = json_decode(curl_exec($curl), true);
-    echo $data['data']['city']['name']." : ".$data['data']['condition']['condition'];
+    if ( !empty($data['result']['city']) ) {
+	    print<<<EOT
+    <h2 class="indexcolor">Weather<br /></h2>
+    <p class="indexcolor"><span class="ch">
+EOT;
+    echo "Updated at ".$data['result']['updatetime']."<br />";
+    echo $data['result']['city']." : ".$data['result']['weather'].'<br />';
+    echo "<span style='font-size:0.9em;'>".$data['result']['index'][3]['detail']."</span>";
+    
     ?>
     </span></p>
     <div class="wtlogo">
-		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather2/W'.$data['data']['condition']['icon'].'.png">';?>
+		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather2/W'.$data['result']['img'].'.png">';?>
 	</div>
+	<?php } ?>
+<?php get_footer(); ?>
 </div>
 <div style="display:none;">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1272718072'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272718072' type='text/javascript'%3E%3C/script%3E"));</script>
