@@ -230,7 +230,7 @@ EOT;
     ?>
     </span></p>
     <div class="wtlogo">
-		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather2/W'.$data['result']['img'].'.png">';?>
+		<?php echo '<img class="weather" width="72" height="72" src="'.get_template_directory_uri().'/images/weather/'.$data['result']['img'].'.png">';?>
 	</div>
 	<?php } ?>
 <?php get_footer(); ?>
