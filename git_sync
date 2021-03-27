@@ -1,0 +1,27 @@
+#!/bin/bash
+echo -e "\n【 开始同步 】\n"
+read -p "请输入对本次上传的描述: " MSG
+echo -e "【 添加本地文件 】"
+git add /web/page/wp-content/themes/CovEar/
+echo -e "【 显示文件变化 】"
+git status
+echo -e "【 更新本地仓库 】"
+git commit -m "${MSG}"
+echo -e "【 添加GitHub远程仓库 】"
+git remote add CovEar git@github.com:DavidDengHui/CovEar.git
+echo -e "【 添加GitHub远程链接 】"
+git remote set-url CovEar git@github.com:DavidDengHui/CovEar.git
+echo -e "【 上传GitHub远程仓库 】"
+git push -u CovEar +master
+echo -e "【 删除GitHub远程缓存 】"
+git remote rm CovEar
+echo -e "【 添加Gitee远程仓库 】"
+git remote add CovEar git@gitee.com:DavidDengHui/CovEar.git
+echo -e "【 添加Gitee远程链接 】"
+git remote set-url CovEar git@gitee.com:DavidDengHui/CovEar.git
+echo -e "【 上传GItee远程仓库 】"
+git push -u CovEar +master
+echo -e "【 删除Gitee远程缓存 】"
+git remote rm CovEar
+echo -e "\n【 同步完成 】\n"
+exit
