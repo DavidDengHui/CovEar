@@ -9,6 +9,16 @@ function remove_open_sans() {
     wp_enqueue_style('open-sans','');
 }
 add_action( 'init', 'remove_open_sans' );
+
+//移除左上角WordPress Logo
+function annointed_admin_bar_remove() {
+        global $wp_admin_bar;
+        /* Remove their stuff */
+        $wp_admin_bar->remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
+
+
 //注册导航
 register_nav_menus(
       array(
@@ -60,11 +70,11 @@ if ( '' == $text ) {
 }
 
 //头像问题
-function replace_avatar_url($avatar) {
-    $avatar = str_replace(array("www.gravatar.com","0.gravatar.com","1.gravatar.com","2.gravatar.com"),"ds-gravatar.qiniudn.com",$avatar);
-    return $avatar;
+function replace_gravatar($avatar) {
+	$avatar = str_replace(array("gravatar.com", "secure.gravatar.com", "www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com", "cn.gravatar.com"), "sdn.geekzu.org", $avatar);
+	return $avatar;
 }
-add_filter( 'get_avatar', 'replace_avatar_url', 10, 3 );
+add_filter( 'get_avatar', 'replace_gravatar' );
 
 //去除分类标志代码
 add_action( 'load-themes.php',  'no_category_base_refresh_rules');
@@ -142,28 +152,28 @@ remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
 
 //禁emoj
-function disable_embeds_init() {
-    /* @var WP $wp */
-    global $wp;
-    // Remove the embed query var.
-    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
-        'embed',
-    ) );
-    // Remove the REST API endpoint.
-    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-    // Turn off
-    add_filter( 'embed_oembed_discover', '__return_false' );
-    // Don't filter oEmbed results.
-    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-    // Remove oEmbed discovery links.
-    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-    // Remove oEmbed-specific JavaScript from the front-end and back-end.
-    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
-    // Remove all embeds rewrite rules.
-    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
-}
-add_action( 'init', 'disable_embeds_init', 9999 );
+//function disable_embeds_init() {
+//    /* @var WP $wp */
+//    global $wp;
+//    // Remove the embed query var.
+//    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
+//        'embed',
+//    ) );
+//    // Remove the REST API endpoint.
+//    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+//    // Turn off
+//    add_filter( 'embed_oembed_discover', '__return_false' );
+//    // Don't filter oEmbed results.
+//    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+//    // Remove oEmbed discovery links.
+//    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+//    // Remove oEmbed-specific JavaScript from the front-end and back-end.
+//    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+//    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
+//    // Remove all embeds rewrite rules.
+//    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+//}
+//add_action( 'init', 'disable_embeds_init', 9999 );
 /**
  * Removes the 'wpembed' TinyMCE plugin.
  *
@@ -452,7 +462,7 @@ margin: 15px 0;">' . nl2br($comment->comment_content) . '</p>
 <p>您可以点击 <a style="text-decoration:none; color:#00bbff"
 href="' . htmlspecialchars(get_comment_link($parent_id)) . '">查看回复的完整內容</a></p>
 <p>欢迎再次光临 <a style="text-decoration:none; color:#00bbff"
-href="' . get_option('home') . '">' . get_option('blogname') . '</a></p>
+href="' . get_option('home') . '">' . get_option('header_bzms') . '</a></p>
 <p>(此邮件由系统自动发出, 请勿回复.)</p>
 </div>
 </div>';
