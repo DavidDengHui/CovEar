@@ -77,10 +77,28 @@ div#bgpic > img {height:100%;width:100%;border:0;}
 		?>
 	</div>
 	<h1 class="indexcolor"><?php bloginfo('name'); ?></h1>
+<p class="indexcolor" style="height: 24px; line-height: 24px; margin: 15px 0;">
+                <i class="iconfont icon-zuobiao"></i><span href="/" target"_blank"><?php echo get_option('header_dzzb'); ?></span><br /></p>
+
 	<p class="indexcolor"><?php echo get_option('header_bzms'); ?></p>
+	<br />
+        <p class="nav">
+        <?php
+        $menuParameters = array(
+        'container' => false,
+        'echo' => false,
+        'items_wrap' => '%3$s',
+        'depth' => 0,
+        'theme_location'=>'main',
+        );
+        echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );
+        ?>
+        </p>
+    <br />
+
+<!-- 位置组件 -->
 	<p class="indexcolor" style="height: 24px; line-height: 24px; margin: 15px 0;">
-		<i class="iconfont icon-zuobiao"></i><?php echo get_option('header_dzzb'); ?><br />
-		You are here <i class="iconfont icon-zuobiao"></i><span class="ch">
+		Are you here? <br /><i class="iconfont icon-zuobiao"></i><span class="ch">
     <?php 
     //$ip = $_SERVER["REMOTE_ADDR"];
     //$ip = "60.205.39.198";
@@ -144,26 +162,15 @@ div#bgpic > img {height:100%;width:100%;border:0;}
         echo '湖南省株洲市('.$data['ret'].')';
     }
     ?> 
-	</span></p>
-    <br /><br />
-	<p class="nav">
-	<?php   
-	$menuParameters = array(  
-	'container' => false,  
-	'echo' => false,  
-	'items_wrap' => '%3$s',  
-	'depth' => 0,  
-	'theme_location'=>'main',
-	);  
-	echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );  
-	?> 
-	</p>
-    <br />
+	</span></p><br />
+
+<!-- 天气组件 -->
     <!--h2 class="indexcolor">Weather<br /></h2>
     <p class="indexcolor"><span class="ch"-->
     <?php
-    $city=$city.'市';
-    $file = get_template_directory_uri().'/images/weather2/cityID.xml';
+//    $city=$city.'市';
+//echo $city;
+/*    $file = get_template_directory_uri().'/images/weather2/cityID.xml';
     $xmlTag = array(
         'Fid',
         'name'
@@ -190,9 +197,9 @@ div#bgpic > img {height:100%;width:100%;border:0;}
         }
     }
     if ( $Fid == '0' ) {
-        $Fid = '657';
+	$Fid = '209';
         $name = '株洲市';
-    }
+    }*/
     $host = "https://jisutqybmf.market.alicloudapi.com";
     $path = "/weather/query";
     $method = "GET";
@@ -200,11 +207,13 @@ div#bgpic > img {height:100%;width:100%;border:0;}
     $headers = array();
     array_push($headers, "Authorization:APPCODE " . $appcode);
 //    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
-    $cityID = $Fid;
+    array_push($headers, "Content-Type".":"."application/json; charset=UTF-8");
+//    $cityID = $Fid;
     $token = '46e13b7aab9bb77ee3358c3b672a2ae4';
-    $querys = "city=".$city;
-    $bodys = "";
+//    $querys = "city=".URLEncode($city);
+    $bodys = "null";
     $url = $host . $path . "?" . $querys;
+//var_dump($url);
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($curl, CURLOPT_URL, $url);
@@ -216,8 +225,12 @@ div#bgpic > img {height:100%;width:100%;border:0;}
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
-    //var_dump($data);
+    //curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys);
+    //$data = curl_exec($curl);
+//var_dump($curl);
     $data = json_decode(curl_exec($curl), true);
+//var_dump($data);
+//echo $data['result']['city'];
     if ( !empty($data['result']['city']) ) {
 	    print<<<EOT
     <h2 class="indexcolor">Weather<br /></h2>
@@ -225,7 +238,7 @@ div#bgpic > img {height:100%;width:100%;border:0;}
 EOT;
     echo "Updated at ".$data['result']['updatetime']."<br />";
     echo $data['result']['city']." : ".$data['result']['weather'].'<br />';
-    echo "<span style='font-size:0.9em;'>".$data['result']['index'][3]['detail']."</span>";
+    echo "<span style='font-size:0.9em;'>".$data['result']['aqi']['aqiinfo']['affect']."</span>";
     
     ?>
     </span></p>
