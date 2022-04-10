@@ -43,6 +43,13 @@ var _hmt = _hmt || [];
 })();
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+</script>
 
 </div>
 <?php wp_footer(); ?>
