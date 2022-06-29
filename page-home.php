@@ -98,7 +98,7 @@ div#bgpic > img {height:100%;width:100%;border:0;}
 
 <!-- 位置组件 -->
 	<p class="indexcolor" style="height: 24px; line-height: 24px; margin: 15px 0;">
-		Are you here? <br /><i class="iconfont icon-zuobiao"></i><a href="/getip.php?ipv6" title="获取您的IP地址" target="_blank" class="ch">
+		Are you here? <br /><i class="iconfont icon-zuobiao"></i><a href="/ip.php" title="获取您的IP地址" target="_blank" class="ch">
     <?php 
     //$ip = $_SERVER["REMOTE_ADDR"];
     //$ip = "60.205.39.198";
