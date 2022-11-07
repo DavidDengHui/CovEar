@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <head>
-<title>404 - Not Found</title>
+<title>403 - Not Found</title>
 </head>
 <center>
 <div class="bg">
