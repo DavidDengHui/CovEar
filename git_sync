@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "\n【 开始同步 】\n"
 echo -e "【 添加本地文件 】"
-git add /web/page/wp-content/themes/CovEar/
+git add /www/wwwroot/pages/wp-content/themes/CovEar
 echo -e "【 显示文件变化 】"
 git status
 read -p "请输入对本次上传的描述: " MSG
