@@ -210,7 +210,7 @@ div#bgpic > img {height:100%;width:100%;border:0;}
     array_push($headers, "Content-Type".":"."application/json; charset=UTF-8");
 //    $cityID = $Fid;
     $token = '46e13b7aab9bb77ee3358c3b672a2ae4';
-//    $querys = "city=".URLEncode($city);
+    $querys = "city=".URLEncode($city);
     $bodys = "null";
     $url = $host . $path . "?" . $querys;
 //var_dump($url);
