@@ -739,18 +739,19 @@ h3#comments {
 }
 
 /* Markdown CSS */
-a {
+a, input {
     cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/ayuda.cur), auto
 }
 a:active {
     cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/work.cur), alias
 }
-p {
+p, span, h1, h2, h3, h4, h5, textarea, text {
     cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto
 }
-body {
+body, head, div, button {
     cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur), auto
-}button {
+}
+html, img {
     cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur), auto
 }
 #emotion-toggle,
