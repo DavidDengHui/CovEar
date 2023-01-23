@@ -259,6 +259,7 @@ add_theme_support( 'post-formats', array( 'status' ) );
 function tages(){
 	global $post;
 	$a = wp_get_post_tags($post->ID);
+	$c = '';
 	if( $a ){
 	foreach($a as $b ){
 		$c .= $b->name.', ';
