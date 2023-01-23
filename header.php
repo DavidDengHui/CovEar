@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php error_reporting(0); ?>
+<?php //error_reporting(0); ?>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' );?>" />

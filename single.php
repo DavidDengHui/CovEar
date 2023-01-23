@@ -10,6 +10,7 @@
 	<div class="mod-post__meta">
 	<div>
 	  <div>— 于 <time datetime="<?php the_time('Y年m月d日 h:i:s'); ?>"><?php the_time('Y年m月d日'); ?></time>，<span><?php echo count_words ($text); ?></span>；</div>
+<?php var_dump($text); ?>
 	  <div>— 文内使用到的标签：<span class="mod_tag"><?php the_tags('', ' ', ''); ?></span></div>
 	</div>
 	</div>
