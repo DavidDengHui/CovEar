@@ -165,16 +165,17 @@ div#bgpic > img {height:100%;width:100%;border:0;}
     }
     $data = json_decode(curl_exec($curl), true);
 //var_dump($data);
+    if ( isset($data['ret']) ) {
     if ( $data['ret'] == 200 ) {
         $city = $data['data']['city'];
         if ( $city == '' || $city == null || $city == ' ' ) {
             $city = '株洲';
         }
         echo $data['data']['country'].$data['data']['area'].$data['data']['region'].$data['data']['city'].$data['data']['isp'];
-    }
+    } }
     else {
         $city = '株洲';
-        echo '湖南省株洲市('.$data['ret'].')';
+        echo '湖南省株洲市';
     }
     ?> 
 	</a></p><br />
