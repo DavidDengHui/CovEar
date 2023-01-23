@@ -61,12 +61,12 @@ add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 //文章字数统计
 function count_words ($text) {  
-global $post;  
-if ( '' == $text ) {  
-   $text = $post->post_content;  
-   if (mb_strlen($output, 'UTF-8') < mb_strlen($text, 'UTF-8')) $output .= '共写了' . mb_strlen(preg_replace('/\s/','',html_entity_decode(strip_tags($post->post_content))),'UTF-8') . '个字';  
-   return $output;  
-}  
+    global $post;
+    $sum = 0;
+    if ( !isset($text) ) $text = $post->post_content;
+    $sum = mb_strlen(preg_replace('/\s/', '', html_entity_decode(strip_tags($text) ) ), 'UTF-8');
+    $output = '共写了'.$sum.'个字';
+    return $output;  
 }
 
 //头像问题
