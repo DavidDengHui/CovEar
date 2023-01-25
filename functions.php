@@ -152,28 +152,28 @@ remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
 
 //禁emoj
-//function disable_embeds_init() {
-//    /* @var WP $wp */
-//    global $wp;
-//    // Remove the embed query var.
-//    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
-//        'embed',
-//    ) );
-//    // Remove the REST API endpoint.
-//    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-//    // Turn off
-//    add_filter( 'embed_oembed_discover', '__return_false' );
-//    // Don't filter oEmbed results.
-//    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-//    // Remove oEmbed discovery links.
-//    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-//    // Remove oEmbed-specific JavaScript from the front-end and back-end.
-//    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-//    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
-//    // Remove all embeds rewrite rules.
-//    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
-//}
-//add_action( 'init', 'disable_embeds_init', 9999 );
+function disable_embeds_init() {
+    /* @var WP $wp */
+    global $wp;
+    // Remove the embed query var.
+    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
+        'embed',
+    ) );
+    // Remove the REST API endpoint.
+    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+    // Turn off
+    add_filter( 'embed_oembed_discover', '__return_false' );
+    // Don't filter oEmbed results.
+    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+    // Remove oEmbed discovery links.
+    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+    // Remove oEmbed-specific JavaScript from the front-end and back-end.
+    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
+    // Remove all embeds rewrite rules.
+    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+}
+add_action( 'init', 'disable_embeds_init', 9999 );
 /**
  * Removes the 'wpembed' TinyMCE plugin.
  *
@@ -475,3 +475,19 @@ wp_mail( $to, $subject, $message, $headers );
 }
 }
 add_action('comment_post', 'comment_mail_notify');
+
+/*
+ * 屏蔽 REST API
+ */
+add_filter('json_enabled', '__return_false');
+add_filter('json_jsonp_enabled', '__return_false');
+add_filter('rest_enabled', '__return_false');
+add_filter('rest_jsonp_enabled', '__return_false');
+// 移除头部wp-json标签与HTTP header中的link
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
+remove_action('template_redirect', 'rest_output_link_header', 11);
+add_filter('rest_authentication_errors', 'demo_disable_rest_api');
+function demo_disable_rest_api($access)
+{
+    return new WP_Error('rest_disabled', __('The REST API on this site has been disabled.'), ['status' => rest_authorization_required_code()]);
+}
