@@ -144,13 +144,13 @@ function no_category_base_request($query_vars) {
     }
     return $query_vars;
 }
-
+/*
 //禁json
 add_filter('rest_enabled', '_return_false');
 add_filter('rest_jsonp_enabled', '_return_false');
 remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-
+*/
 //禁emoj
 function disable_embeds_init() {
     /* @var WP $wp */
@@ -478,7 +478,7 @@ add_action('comment_post', 'comment_mail_notify');
 
 /*
  * 屏蔽 REST API
- */
+ *//*
 add_filter('json_enabled', '__return_false');
 add_filter('json_jsonp_enabled', '__return_false');
 add_filter('rest_enabled', '__return_false');
@@ -490,4 +490,4 @@ add_filter('rest_authentication_errors', 'demo_disable_rest_api');
 function demo_disable_rest_api($access)
 {
     return new WP_Error('rest_disabled', __('The REST API on this site has been disabled.'), ['status' => rest_authorization_required_code()]);
-}
+}*/
