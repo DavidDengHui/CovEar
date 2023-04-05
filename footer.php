@@ -1,6 +1,12 @@
+<script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 <footer class="mod-footer" role="contentinfo" id="footer_in">
 	<p class="f_bq">
-		<?php //if($word_t2!=""){echo $word_t2;}else{echo 'Copyright';} ?>Copyright &copy; 2014-<?php echo date("Y"); echo " <a class='banquan' title='";bloginfo('name');echo '：'; bloginfo('description');echo "' target='_blank' href='//covear.top/'>"; bloginfo('name'); echo '</a><a title="View Information" href="https://icp.chinaz.com/home/info?host=covear.top" target="_blank"> · </a><a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备17019987号</a>'; ?></p>
+		<?php //if($word_t2!=""){echo $word_t2;}else{echo 'Copyright';} ?>Copyright &copy; 2014-<?php echo date("Y"); echo " <a class='banquan' title='";bloginfo('name');echo '：'; bloginfo('description');echo "' target='_blank' href='//covear.top/'>"; bloginfo('name'); echo '</a><a title="View Information" href="https://icp.chinaz.com/home/info?host=covear.top" target="_blank"> · </a><a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备17019987号</a>'; ?>
+</p>
+<p class="links">
+<wb:share-button appkey="2345637434" addition="simple" type="button" ralateUid="2390418665" default_text="超有意思的，快来看看~" language="zh_cn"></wb:share-button>
+<wb:like appkey="3MnEym" skin="silver" type="simple"></wb:like>
+</p>
 </footer>
 <script>
 POWERMODE.colorful = true; // ture 为启用礼花特效

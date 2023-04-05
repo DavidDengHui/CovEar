@@ -1,9 +1,19 @@
 <!DOCTYPE html>
+<html xmlns:wb=“http://open.weibo.com/wb”>
 <?php //error_reporting(0); ?>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' );?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--必填-->
+<meta property="og:type" content="webpage" />
+<meta property="og:url" content="https://covear.top/" />
+<meta property="og:title" content="啊晖de老窝" />
+<meta property="og:description" content="我的个人博客，分享我的发现~" />
+<!--选填-->
+<meta property="og:image" content="https://covear.top/wp-content/themes/CovEar/images/bg1.jpg" />
+<meta name="weibo:webpage:create_at" content="2014-01-01" />
+<meta name="weibo:webpage:update_at" content="2023-04-01" />
 <?php include( 'seo.php' ); ?>
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen" type="text/css">
 <?php
