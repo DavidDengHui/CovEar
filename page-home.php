@@ -250,9 +250,9 @@ div#bgpic > img {height:100%;width:100%;border:0;}
     if ( !empty($data['result']['city']) ) {
 	    print<<<EOT
     <h2 class="indexcolor">Weather<br /></h2>
-    <p class="indexcolor"><span class="ch">
+    <p class="indexcolor"><span class="indexcolor">
 EOT;
-    echo "Updated at ".$data['result']['updatetime']."<br />";
+    echo "Updated at ".$data['result']['updatetime']."</span><br /><span class='ch'>";
     echo $data['result']['city']." : ".$data['result']['weather'].'<br />';
     echo "<span style='font-size:0.9em;'>".$data['result']['aqi']['aqiinfo']['affect']."</span>";
     
