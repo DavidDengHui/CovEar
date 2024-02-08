@@ -1,7 +1,7 @@
 <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 <footer class="mod-footer" role="contentinfo" id="footer_in">
 	<p class="f_bq">
-		<?php //if($word_t2!=""){echo $word_t2;}else{echo 'Copyright';} ?>Copyright &copy; 2014-<?php echo date("Y"); echo " <a class='banquan' title='";bloginfo('name');echo '：'; bloginfo('description');echo "' target='_blank' href='//covear.top/'>"; bloginfo('name'); echo '</a><a title="View Information" href="https://icp.chinaz.com/home/info?host=covear.top" target="_blank"> · </a><a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备17019987号</a>'; ?>
+		<?php //if($word_t2!=""){echo $word_t2;}else{echo 'Copyright';} ?>Copyright &copy; 2014-<?php echo date("Y"); echo " <a title='";bloginfo('name');echo '：'; bloginfo('description');echo "' target='_blank' href='//covear.top/'>"; bloginfo('name'); echo '<span style="display:none;" class="banquan"></span></a><a>. All rights reserved.</a><br /><img style="display: inline; width: 16px; object-fit: contain; vertical-align: top; opacity: 1; margin: 0 5px;" src="//covear.top/wp-content/themes/CovEar/images/ba.png" > <a href="https://beian.mps.gov.cn/#/query/webSearch?code=43020002000058" rel="noreferrer" target="_blank">湘公网安备43020002000058</a><a title="View Information" href="https://icp.chinaz.com/home/info?host=Y292ZWFyLnRvcA%253D%253D" target="_blank"> ·</a><a href="http://beian.miit.gov.cn/" target="_blank">湘ICP备17019987号</a>'; ?>
 </p>
 <p class="links">
 <wb:share-button appkey="2345637434" addition="simple" type="button" ralateUid="2390418665" default_text="超有意思的，快来看看~" language="zh_cn"></wb:share-button>
